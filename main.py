@@ -87,26 +87,51 @@ def random_walk(distance, pensize_width, speed):
     tim.forward(distance)
 
 
+def multi_random_walk(number_of_sims, number_of_moves, distance, pensize_width, speed,dot_size):
+    tim.pensize(pensize_width)
+    tim.speed(speed)
+    tim.shape("turtle")
+    for _ in range(number_of_sims):
+        tim.pendown()
+        tim.color(random_color())
+        for moves in range(number_of_moves):
+            heading = choice([0, 90, 180, 270])
+            tim.setheading(heading)
+            tim.forward(distance)
+        tim.dot(dot_size)
+        tim.penup()
+        tim.home()
+
 # side_length = 100
-#
+# #
 # for s in range(3, 10 + 1):
 #     draw_shape(s, side_length)
 #     print(s)
 # a cor random podia ter sido feita pela escolha de uma cor numa lista com nomes das cores
 
-# moves = 77
+# moves = 200
 # steps = 20
-pen_width = 3
-turtle_speed = "fastest"
+# pen_width = 3
+# turtle_speed = "fastest"
+#
 # for _ in range(moves):
-#     print(_)
 #     random_walk(steps, pen_width, turtle_speed)
 
-radius = 100
-number_circles = 90
-# draw_spirograph(radius, number_circles, pen_width, turtle_speed)
 
-spacing_between_circles = 5
-draw_spirograph_spacing(radius,spacing_between_circles, pen_width, turtle_speed)
+sims = 20
+moves = 100
+steps = 20
+pen_width = 3
+turtle_speed = 30
+dot_size = 10
+multi_random_walk(sims, moves, steps, pen_width, turtle_speed, dot_size)
+
+
+# radius = 100
+# number_circles = 90
+# # draw_spirograph(radius, number_circles, pen_width, turtle_speed)
+#
+# spacing_between_circles = 5
+# draw_spirograph_spacing(radius,spacing_between_circles, pen_width, turtle_speed)
 
 screen.exitonclick()
