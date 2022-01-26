@@ -1,8 +1,8 @@
+import turtle
 from random import random, randrange, randint, choice
 from turtle import Turtle, Screen
 
 tim = Turtle()
-
 
 # timmy_the_turtle.shape("turtle")
 # timmy_the_turtle.color("blue")
@@ -33,7 +33,8 @@ tim = Turtle()
 #         angle = 360/sides_number
 #         tim.right(angle)
 screen = Screen()
-screen.colormode(255)
+# screen.colormode(255)
+turtle.colormode(255)
 
 
 def random_color():
@@ -54,6 +55,29 @@ def draw_shape(number_of_sides, side_length):
         tim.right(angle)
 
 
+def draw_spirograph(radius, circles, width, speed):
+    heading = 0
+    increment = 360 / circles
+    tim.pensize(width)
+    tim.speed(speed)
+    for _ in range(circles):
+        heading += increment
+        tim.setheading(heading)
+        tim.color(random_color())
+        tim.circle(radius)
+
+
+def draw_spirograph_spacing(radius, spacing, width, speed):
+    heading = 0
+    angle_to_increment = int(360 / spacing)
+    tim.pensize(width)
+    tim.speed(speed)
+    for _ in range(angle_to_increment):
+        tim.color(random_color())
+        tim.circle(radius)
+        tim.setheading(tim.heading()+spacing)
+
+
 def random_walk(distance, pensize_width, speed):
     heading = choice([0, 90, 180, 270])
     tim.setheading(heading)
@@ -70,12 +94,19 @@ def random_walk(distance, pensize_width, speed):
 #     print(s)
 # a cor random podia ter sido feita pela escolha de uma cor numa lista com nomes das cores
 
-moves = 77
-steps = 20
-pen_width = 5
-turtle_speed = 10
-for _ in range(moves):
-    print(_)
-    random_walk(steps, pen_width, turtle_speed)
+# moves = 77
+# steps = 20
+pen_width = 3
+turtle_speed = "fastest"
+# for _ in range(moves):
+#     print(_)
+#     random_walk(steps, pen_width, turtle_speed)
+
+radius = 100
+number_circles = 90
+# draw_spirograph(radius, number_circles, pen_width, turtle_speed)
+
+spacing_between_circles = 5
+draw_spirograph_spacing(radius,spacing_between_circles, pen_width, turtle_speed)
 
 screen.exitonclick()
